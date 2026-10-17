@@ -51,5 +51,4 @@ anomalies → owner confirmation → MCP read API for clients.
 
 ## Notes for next session
 
-- The design doc's open questions (storage/host, no-show grace period, Zoom
-  summaries, Wispr calendar-link behavior) block the first adapter.
+- Storage is SQLite. Host process and language are still open (design §12).

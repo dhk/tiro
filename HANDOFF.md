@@ -18,7 +18,9 @@ pilot snapshot are written. No code.
 
 ## What's next
 
-1. Owner answers the open questions in `docs/design/0001-tiro.md` §12.
+1. Owner answers the remaining open questions in `docs/design/0001-tiro.md`
+   §12 (host process, language). Storage (SQLite), the no-show timing (2h)
+   and the Zoom approach are decided.
 2. Wispr Flow adapter. Wispr is the richest source and usually carries a
    calendar link already.
 3. Gemini adapter: Gmail `from:gemini-notes@google.com` plus the "Notes by

@@ -48,7 +48,8 @@ Nothing to run yet.
 | Layer | Choice |
 |---|---|
 | Interface | MCP server |
-| Language / storage | Undecided; see the design doc's open questions |
+| Storage | SQLite |
+| Language | Undecided; see the design doc's open questions |
 
 ## Key files
 

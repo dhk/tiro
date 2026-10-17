@@ -1,64 +1,70 @@
-# repo-template
+# Tiro
 
-A starting point for new personal repos, distilled from patterns already
-working across dhk's other repos (`work-ledger`, `familiar-places`, `fossil`,
-`crucible`, `skill-map`). Three goals drove the shape:
+Figures out your conversations.
 
-- **Instructive** — a stranger, human or Claude, can orient fast.
-- **Build in public** — the repo's own files carry the argument; nothing
-  depends on private context to make sense.
-- **Workflow-visible** — session continuity is a file, not a lost thread.
+Conversations get captured all over the place: Wispr Flow, Gemini notes in
+Gmail, Zoom, Otter and Teams recaps, iPhone voice memos, the odd ChatGPT
+session. Tiro gathers all of them, ties each one to the calendar event it
+belongs to, and works out with you **whether it happened, who was really
+there, what was said, and who owes what**. It asks you only when something
+looks off. It keeps each source's raw text verbatim and stores nothing a model
+drafted until you confirm it.
 
-## Use it
+Named for Marcus Tullius Tiro, Cicero's secretary, who is credited with the
+Roman shorthand (*notae Tironianae*) used to take down speech as it happened.
 
-```bash
-cp -r template/ ~/Documents/dev/<new-repo-name>
-cd ~/Documents/dev/<new-repo-name>
-# fill in the <placeholders> in README.md, CLAUDE.md, HANDOFF.md
-git init && git add -A && git commit -m "Initial scaffold from repo-template"
-```
+## Status
 
-Then work through [`SETUP.md`](template/SETUP.md) — the repo *settings* a file
-copy cannot carry.
+Design only. No code yet.
 
-## What's in it, and why
+- [x] Design doc: [docs/design/0001-tiro.md](docs/design/0001-tiro.md)
+- [x] One-week read-only pilot over calendar, Wispr Flow and Gmail: [docs/snapshots/2026-10-17-pilot-week.md](docs/snapshots/2026-10-17-pilot-week.md)
+- [ ] Wispr Flow adapter
+- [ ] Gemini (Gmail + Doc) adapter
+- [ ] Calendar matching, duplicate-event merging, anomaly questions
+- [ ] MCP server
+- [ ] wingman client
+- [ ] Zoom, voice memo, vendor-recap and ChatGPT adapters
 
-| File | Answers | Pattern it's drawn from |
-|---|---|---|
-| `README.md` | What is this, why does it exist, what's actually done vs. planned | familiar-places (names its competitor), work-ledger (status honesty, links design issues instead of restating them), crucible ("check me out") |
-| `CLAUDE.md` | Stack, architecture, conventions, **workflow rules** | Every repo's CLAUDE.md; workflow rules specifically from fossil |
-| `HANDOFF.md` | Where did I leave off, what's next, known gotchas | familiar-places/handoff.md |
-| `docs/snapshots/` | Frozen record of a design session or pivot, dated | fossil/context-snapshot.md, reading-with-ears' dated snapshots (relocated out of repo root — see below) |
-| `SETUP.md` | The repo settings that a file copy cannot carry — branch protection, Actions permissions, Pages, secrets, and the local `gh` scope | Learned by hitting each one; see the file's closing note |
-| `docs/design/` | Why a decision was made, not just what it is | praxis's four-question CONTRIBUTING.md frame, crucible/docs/concepts |
-| `.scratch/` (gitignored) | Ephemeral working files — never committed | adventures-in-ai, work-ledger, crucible, reading-with-ears all already do this |
-| `LICENSE` | Building in public means someone else can actually use this | Present in nearly every repo already |
+## Why this exists
 
-## What's deliberately left out by default
+Meeting notetakers (Granola, Fireflies, Otter, Fathom) each pull together the
+recordings *they* made, then sync them to a CRM. None found takes in another
+tool's output (a Gemini email, a Wispr transcript, a voice memo) and files it
+against one calendar event. And none answers the questions the pilot showed
+matter most: did this meeting actually happen, and who was actually on the
+call (the invite list is not the attendee list).
 
-`CONTRIBUTING.md` and `.github/ISSUE_TEMPLATE/` aren't in the base template —
-most of these repos are solo build-in-public, not soliciting outside PRs. Add
-them per-repo (skill-map's `CONTRIBUTING.md` is a good model) once a project
-actually wants contributors.
+Tiro does only that. Interpreting the record, such as relationship history,
+briefs and follow-up drafts, belongs to clients like
+[wingman](https://github.com/dhk/wingman).
 
-CI workflows (`.github/workflows/`) are project-specific by nature — copy the
-relevant one from `praxis`, `crucible`, `skill-map`, `tricorder`, or (for an
-Astro/Node static site — build + non-blocking `astro check`, since a
-type-check step usually needs to start informational until a codebase earns
-a hard gate) `DHK-website`, rather than templating a generic one that won't
-fit.
+## Quickstart
 
-## HANDOFF.md vs. docs/snapshots/ — the split that matters
+Nothing to run yet.
 
-`HANDOFF.md` is **one file, always current, overwritten each session** — the
-first thing a fresh session (you or Claude) should read: where things stand,
-what's next, what to watch out for.
+## Stack
 
-`docs/snapshots/YYYY-MM-DD-<topic>.md` is the opposite: **write-once,
-permanent** — the output of a design sprint or the reasoning behind a pivot,
-worth keeping forever.
+| Layer | Choice |
+|---|---|
+| Interface | MCP server |
+| Language / storage | Undecided; see the design doc's open questions |
 
-Don't let one collapse into the other. reading-with-ears' dated snapshot
-files committed loose at the repo root are the cautionary example — right
-instinct (capture the session), wrong location (repo root, not `docs/`;
-accumulating, not superseding a living handoff doc).
+## Key files
+
+| File | Purpose |
+|---|---|
+| `docs/design/0001-tiro.md` | Scope, data model, matching and anomaly rules, interface, wingman boundary |
+| `docs/snapshots/2026-10-17-pilot-week.md` | The pilot findings the rules came from |
+| `HANDOFF.md` | Current state and next step |
+
+## Known issues / watch points
+
+- **Transcripts contain other people's words.** Never commit real
+  transcripts, summaries or third-party names. Test fixtures must be synthetic.
+- **Never assign a participant from transcript content.** The pilot's one
+  content-based guess was wrong; matching on calendar timing was right.
+
+## License
+
+[MIT](LICENSE)

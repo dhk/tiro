@@ -14,7 +14,7 @@ two.
 Keeps `main` reviewable and stops a stray `git push origin main`.
 
 ```bash
-gh api -X PUT repos/<owner>/<repo>/branches/main/protection \
+gh api -X PUT repos/dhk/tiro/branches/main/protection \
   --input - <<'JSON'
 {
   "required_pull_request_reviews": {"required_approving_review_count": 0},
@@ -44,7 +44,7 @@ GitHub Actions is not permitted to create or approve pull requests
 ```
 
 ```bash
-gh api -X PUT repos/<owner>/<repo>/actions/permissions/workflow \
+gh api -X PUT repos/dhk/tiro/actions/permissions/workflow \
   -F default_workflow_permissions=read \
   -F can_approve_pull_request_reviews=true
 ```
@@ -63,7 +63,7 @@ permissions it holds — have it open a PR instead.
 Only if the repo publishes a site.
 
 ```bash
-gh api -X POST repos/<owner>/<repo>/pages \
+gh api -X POST repos/dhk/tiro/pages \
   -F 'source[branch]=main' -F 'source[path]=/'
 ```
 
@@ -72,7 +72,7 @@ gh api -X POST repos/<owner>/<repo>/pages \
 Never commit them; set them per-repo.
 
 ```bash
-gh secret set OPENROUTER_API_KEY --repo <owner>/<repo>
+gh secret set OPENROUTER_API_KEY --repo dhk/tiro
 ```
 
 ## Local gh scope

@@ -51,4 +51,5 @@ anomalies → owner confirmation → MCP read API for clients.
 
 ## Notes for next session
 
-- Storage is SQLite. Host process and language are still open (design §12).
+- Stack: Python, SQLite, runs on lobster. Code is paused pending a
+  market-fit review (design §12).

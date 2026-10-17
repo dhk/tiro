@@ -15,7 +15,7 @@ Roman shorthand (*notae Tironianae*) used to take down speech as it happened.
 
 ## Status
 
-Design only. No code yet.
+Design only. No code yet. Paused for a market-fit review.
 
 - [x] Design doc: [docs/design/0001-tiro.md](docs/design/0001-tiro.md)
 - [x] One-week read-only pilot over calendar, Wispr Flow and Gmail: [docs/snapshots/2026-10-17-pilot-week.md](docs/snapshots/2026-10-17-pilot-week.md)
@@ -49,7 +49,8 @@ Nothing to run yet.
 |---|---|
 | Interface | MCP server |
 | Storage | SQLite |
-| Language | Undecided; see the design doc's open questions |
+| Language | Python |
+| Host | lobster, next to wingman |
 
 ## Key files
 
